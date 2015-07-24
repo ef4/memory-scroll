@@ -1,0 +1,1 @@
+export { default } from 'memory-scroll/services/memory-scroll';
