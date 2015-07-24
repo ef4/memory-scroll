@@ -19,3 +19,8 @@
     border: 1px solid red;
     bottom-bottom-width: 0;
 }
+
+.liquid-container, .liquid-child {
+    width: 100%;
+    height: 100%;
+}

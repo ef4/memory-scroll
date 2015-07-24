@@ -1,5 +1,5 @@
 {{#memory-scroll class="item-container" key="index-items"}}
   {{#each items as |item|}}
-    {{#link-to "detail" item}}{{item.id}}: {{item.value}}{{/link-to}}
+    {{#link-to "detail" item}}<span data-item-id={{item.id}}>{{item.id}}</span>{{/link-to}}
   {{/each}}
 {{/memory-scroll}}
