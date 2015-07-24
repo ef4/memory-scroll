@@ -1,25 +1,22 @@
 # Memory-scroll
 
-This README outlines the details of collaborating on this Ember addon.
+This addon provides an Ember component that remembers its last scroll
+position and restores it the next time it renders.
 
-## Installation
+```handlebars
+{{!- The key is required, and its how we decide what constitutes "the same" component at some point in the future. -}}
+{{#memory-scroll key="my-fancy-pane"}}
+  {{#each items as |item|}}
+    {{#link-to "detail" item}}{{item.id}}: {{item.value}}{{/link-to}}
+  {{/each}}
+{{/memory-scroll}}
+```
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+`{{memory-scroll}}` does just two things: when its about to be
+destroyed it saves its scroll position into a Service (which is
+Ember's standard way to maintain long-lived application state). And
+when it's just been rendered, it looks in the service to see if it
+should set its scroll position.
 
-## Running
-
-* `ember server`
-* Visit your app at http://localhost:4200.
-
-## Running Tests
-
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+All the rest is up to you, so it's easy to use as a drop-in
+replacement for any `<div>` that is already styled for scrolling.
