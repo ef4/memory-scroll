@@ -4,7 +4,6 @@ This addon provides an Ember component that remembers its last scroll
 position and restores it the next time it renders.
 
 ```handlebars
-{{!- The key is required, and its how we decide what constitutes "the same" component at some point in the future. -}}
 {{#memory-scroll key="my-fancy-pane"}}
   {{#each items as |item|}}
     {{#link-to "detail" item}}{{item.id}}: {{item.value}}{{/link-to}}
@@ -20,3 +19,12 @@ should set its scroll position.
 
 All the rest is up to you, so it's easy to use as a drop-in
 replacement for any `<div>` that is already styled for scrolling.
+
+The `key` attribute is mandatory and it determines what constitutes
+"the same" component that should share memory. The simplest usage is
+to use a constant string ID. A more advanced usage is to use part of
+your model data so the memory is context-dependent, like:
+
+```handlebars
+{{#memory-scroll key=(concat "person-detail/" model.id) }}
+```
