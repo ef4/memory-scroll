@@ -18,6 +18,6 @@ export default Ember.Component.extend({
   },
   willDestroyElement: function() {
     var position = this.$().scrollTop();
-    this.get('memory')[this.get('key')] = position;
+    Ember.set(this.get('memory'), this.get('key'), position);
   }
 });
