@@ -28,3 +28,11 @@ your model data so the memory is context-dependent, like:
 ```handlebars
 {{#memory-scroll key=(concat "person-detail/" model.id) }}
 ```
+
+# Controlling Document Scroll
+
+If instead you want to remember the scroll position of the document itself, you can use:
+
+    {{remember-document-scroll key=model.id}}
+
+It's key works the same way as `memory-scroll`, but it reads and writes `$(document).scrollTop()`.
