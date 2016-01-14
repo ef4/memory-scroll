@@ -5,7 +5,7 @@ moduleForComponent('memory-scroll', 'Integration | Component | memory scroll', {
   integration: true
 });
 
-test('it preserves scroll position', function(assert) {
+test('it preserves scroll position when component is replaced', function(assert) {
   this.render(hbs`
     <style type="text/css">
       .sample {
@@ -35,7 +35,7 @@ test('it preserves scroll position', function(assert) {
   assert.equal(this.$('.sample').scrollTop(), 50);
 });
 
-test('it preserves independent scroll positions per key', function(assert) {
+test('it preserves independent scroll positions per key when component is replaced', function(assert) {
   this.render(hbs`
     <style type="text/css">
       .sample {
@@ -64,6 +64,36 @@ test('it preserves independent scroll positions per key', function(assert) {
   this.set('showIt', 'second');
   assert.equal(this.$('.sample').scrollTop(), 0);
   this.set('showIt', false);
+  this.set('showIt', 'first');
+  assert.equal(this.$('.sample').scrollTop(), 50);
+});
+
+test('it preserves independent scroll positions per key when key changes', function(assert) {
+  this.render(hbs`
+    <style type="text/css">
+      .sample {
+        height: 30px;
+        overflow-y: scroll;
+      }
+      .sample > div {
+        height: 100px;
+      }
+    </style>
+
+    {{#if showIt}}
+      {{#memory-scroll key=showIt class="sample"}}
+        <div>
+          sample content
+        </div>
+      {{/memory-scroll}}
+    {{/if}}
+  `);
+
+  this.set('showIt', 'first');
+  assert.equal(this.$('.sample').text().trim(), 'sample content');
+  this.$('.sample').scrollTop(50);
+  this.set('showIt', 'second');
+  assert.equal(this.$('.sample').scrollTop(), 0);
   this.set('showIt', 'first');
   assert.equal(this.$('.sample').scrollTop(), 50);
 });

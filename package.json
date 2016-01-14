@@ -1,6 +1,6 @@
 {
   "name": "memory-scroll",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An Ember component that remembers its scroll position.",
   "directories": {
     "doc": "doc",
@@ -21,7 +21,6 @@
     "broccoli-asset-rev": "^2.0.2",
     "ember-cli": "1.13.1",
     "ember-cli-app-version": "0.4.0",
-    "ember-cli-content-security-policy": "0.4.0",
     "ember-cli-dependency-checker": "^1.0.0",
     "ember-cli-htmlbars": "0.7.9",
     "ember-cli-htmlbars-inline-precompile": "^0.1.1",
@@ -30,7 +29,6 @@
     "ember-cli-qunit": "0.3.15",
     "ember-cli-release": "0.2.3",
     "ember-cli-uglify": "^1.0.1",
-    "ember-data": "1.13.5",
     "ember-disable-prototype-extensions": "^1.0.0",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
