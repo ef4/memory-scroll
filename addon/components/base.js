@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   didInsertElement() {
     this._super(...arguments);
     if (this.get('memoryEvent') === 'onScroll') {
-      this.$().on('scroll', this, this.onScroll.bind(this));
+      this.targetElement().on('scroll', this, this.onScroll.bind(this));
     }
   },
 
@@ -30,7 +30,7 @@ export default Ember.Component.extend({
   willDestroyElement() {
     this._super(...arguments);
     if (this.get('memoryEvent') === 'onScroll') {
-      this.$().off('scroll', this, this.onScroll.bind(this));
+      this.targetElement().off('scroll', this, this.onScroll.bind(this));
     } else {
       this.remember(this.get('key'));
     }
