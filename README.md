@@ -17,7 +17,8 @@ Example:
 {{/memory-scroll}}
 ```
 
-If your component is not destroyed
+
+if you have a component that isn't destroyed.
 
 ```handlebars
 {{#memory-scroll key="my-fancy-pane" memoryEvent="onScroll"}}
