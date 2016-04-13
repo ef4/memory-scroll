@@ -97,3 +97,45 @@ test('it preserves independent scroll positions per key when key changes', funct
   this.set('showIt', 'first');
   assert.equal(this.$('.sample').scrollTop(), 50);
 });
+
+
+test('it preserves independent scroll when use memory event as onScroll and change data down', function(assert) {
+  this.render(hbs`
+    <style type="text/css">
+      .sample {
+        height: 30px;
+        overflow-y: scroll;
+      }
+      .sample > div {
+        height: 100px;
+      }
+    </style>
+
+    {{#if showIt}}
+      {{#memory-scroll key=showIt memoryEvent="onScroll" class="sample"}}
+        <div>
+          sample content
+          {{#each items as |item|}}
+            <p class="item-list">{{item.id}}</p>
+          {{/each}}
+        </div>
+      {{/memory-scroll}}
+    {{/if}}
+  `);
+
+  this.set('showIt', 'first');
+  assert.equal(this.$('.sample').text().trim(), 'sample content');
+  this.$('.sample').scrollTop(50);
+  this.set('items', [{id: 1}]);
+  this.set('showIt', 'second');
+  this.set('items', [{id:4}]);
+  this.$('.sample').scrollTop(20);
+  this.set('showIt', 'first');
+  this.set('items', [{id: 1}]);
+  assert.equal(this.$('.item-list').text().trim(), '1');
+  assert.equal(this.$('.sample').scrollTop(), 50);
+  this.set('showIt', 'second');
+  this.set('items', [{id:4}]);
+  assert.equal(this.$('.item-list').text().trim(), '4');
+  assert.equal(this.$('.sample').scrollTop(), 20);
+});
