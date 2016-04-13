@@ -29,10 +29,9 @@ export default Ember.Component.extend({
 
   willDestroyElement() {
     this._super(...arguments);
+    this.remember(this.get('key'));
     if (this.get('memoryEvent') === 'onScroll') {
       this.targetElement().off('scroll', this, this.onScroll.bind(this));
-    } else {
-      this.remember(this.get('key'));
     }
   },
 
