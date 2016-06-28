@@ -1,4 +1,9 @@
-{{#memory-scroll class="item-container" key="index-items"}}
+<h2>Conversations example</h2>
+  <a href="" {{action "changeConversation" 'one'}}>Conversation One</a>
+  <a href="" {{action "changeConversation" 'two'}}>Conversation Two</a>
+
+<h4>You are in conversation {{conversationKey}}</h4>
+{{#memory-scroll class="item-container" key=conversationKey}}
   {{#each items as |item|}}
     {{#link-to "detail" item}}<span data-item-id={{item.id}}>{{item.id}}</span>{{/link-to}}
   {{/each}}
