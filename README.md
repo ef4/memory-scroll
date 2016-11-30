@@ -39,7 +39,9 @@ your model data so the memory is context-dependent, like:
 
 If instead you want to remember the scroll position of the document itself, you can use:
 
-    {{remember-document-scroll key=model.id}}
+```handlebars
+{{remember-document-scroll key=model.id}}
+```
 
 It's key works the same way as `memory-scroll`, but it reads and writes `$(document).scrollTop()`.
 
@@ -47,6 +49,8 @@ It's key works the same way as `memory-scroll`, but it reads and writes `$(docum
 
 Example:
 
-    {{scroll-to position=0 key=model.id}}
+```handlebars
+{{scroll-to position=0 key=model.id}}
+```
 
 This component always scrolls the document to the given position when it renders and when the key changes.
