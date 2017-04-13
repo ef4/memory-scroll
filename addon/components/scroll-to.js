@@ -13,7 +13,7 @@ export default Component.extend({
     let key = this.get('key');
     if (key !== this._lastKey) {
       this._lastKey = key;
-      (document.scrollingElement || document.documentElement).scrollTop = this.get('position') || 0;
+      (document.scrollingElement || document.documentElement).scrollTop = (this.get('position') || 0);
     }
   }
 });

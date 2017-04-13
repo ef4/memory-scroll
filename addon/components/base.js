@@ -28,7 +28,7 @@ export default Component.extend({
 
   remember(key) {
     if (key) {
-      var position = this.targetElement().scrollTop();
+      var position = this.targetElement().scrollTop;
       this.get('memory')[key] = position;
     }
   },
@@ -37,7 +37,7 @@ export default Component.extend({
     var position = this.get('memory')[key] || 0;
     var elt = this.targetElement();
     if (elt) {
-      elt.scrollTop(position);
+      elt.scrollTop = position;
     }
   }
 
