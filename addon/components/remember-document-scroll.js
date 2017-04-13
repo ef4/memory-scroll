@@ -1,8 +1,8 @@
 import Base from './base';
-import Ember from 'ember';
 
 export default Base.extend({
   targetElement() {
-    return Ember.$(document);
+    return document.scrollingElement || // Covers every modern browser
+           document.documentElement; // Covers IE
   }
 });
