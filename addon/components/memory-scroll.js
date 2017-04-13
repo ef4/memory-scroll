@@ -2,6 +2,6 @@ import Base from './base';
 
 export default Base.extend({
   targetElement() {
-    return this.$();
+    return this.element;
   }
 });

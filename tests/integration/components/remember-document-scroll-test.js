@@ -1,13 +1,11 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
 
 moduleForComponent('remember-document-scroll', 'Integration | Component | remember document scroll', {
   integration: true
 });
 
 test('it controls document scroll position', function(assert) {
-  let doc = Ember.$(document);
   this.render(hbs`
     <style type="text/css">
       body {
@@ -20,9 +18,9 @@ test('it controls document scroll position', function(assert) {
     {{/if}}
   `);
   this.set('showIt', 'first');
-  doc.scrollTop(50);
+  document.scrollingElement.scrollTop = 50;
   this.set('showIt', false);
-  doc.scrollTop(0);
+  document.scrollingElement.scrollTop = 0;
   this.set('showIt', 'first');
-  assert.equal(doc.scrollTop(), 50);
+  assert.equal(document.scrollingElement.scrollTop, 50);
 });
