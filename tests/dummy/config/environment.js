@@ -40,7 +40,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.baseURL = '/memory-scroll'; // change to rootURL when upgrading to modern Ember
   }
 
   return ENV;

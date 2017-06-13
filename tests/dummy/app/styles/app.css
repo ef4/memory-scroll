@@ -6,18 +6,22 @@
     padding: 4px;
 }
 
-.item-container {
-    width: 100%;
+.index {
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    overflow-y: scroll;
+}
 
+.item-container {
+    overflow-y: scroll;
+    flex-grow: 1;
 }
 
 .item-container a {
     display: block;
     height: 4em;
     border: 1px solid red;
-    bottom-bottom-width: 0;
+    border-bottom-width: 0;
 }
 
 .liquid-container, .liquid-child {
