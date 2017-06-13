@@ -1,5 +1,7 @@
 # Memory-scroll
 
+[Demo App](https://ef4.github.io/memory-scroll/)
+
 This addon provides Ember components that help you avoiding losing the
 user's scroll positions unexpectedly as they navigate through the app.
 
