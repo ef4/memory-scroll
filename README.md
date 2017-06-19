@@ -45,7 +45,7 @@ If instead you want to remember the scroll position of the document itself, you 
 {{remember-document-scroll key=model.id}}
 ```
 
-It's key works the same way as `memory-scroll`, but it reads and writes `$(document).scrollTop()`.
+Its key works the same way as `memory-scroll`, but it reads and writes `$(document).scrollTop()`.
 
 ## scroll-to
 
