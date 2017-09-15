@@ -34,7 +34,7 @@ to use a constant string ID. A more advanced usage is to use part of
 your model data so the memory is context-dependent, like:
 
 ```handlebars
-{{#memory-scroll key=(concat "person-detail/" model.id) }}
+{{memory-scroll key=(concat "person-detail/" model.id)}}
 ```
 
 ## remember-document-scroll
