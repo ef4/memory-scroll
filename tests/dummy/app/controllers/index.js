@@ -1,7 +1,9 @@
-import Ember from 'ember';
-export default Ember.Controller.extend({
+import Controller from "@ember/controller";
+import { computed } from "@ember/object";
+
+export default Controller.extend({
   conversationKey: 'one',
-  items: Ember.computed(function() {
+  items: computed(function() {
     return Array(10).fill(null).map((_, id) => ({id}));
   }),
   actions: {

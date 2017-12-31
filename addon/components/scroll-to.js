@@ -1,7 +1,6 @@
-import Ember from 'ember';
-const FIRST_RUN = function(){};
+import Component from "@ember/component";
 
-const { Component } = Ember;
+const FIRST_RUN = () => {};
 
 export default Component.extend({
   init() {
@@ -10,7 +9,7 @@ export default Component.extend({
   },
   didRender() {
     this._super(...arguments);
-    let key = this.get('key');
+    const key = this.get('key');
     if (key !== this._lastKey) {
       this._lastKey = key;
       (document.scrollingElement || document.documentElement).scrollTop = (this.get('position') || 0);

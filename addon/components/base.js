@@ -1,16 +1,12 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  inject
-} = Ember;
+import Component from "@ember/component";
+import { inject as service } from "@ember/service";
 
 export default Component.extend({
-  memory: inject.service('memory-scroll'),
+  memory: service('memory-scroll'),
 
   didRender() {
     this._super(...arguments);
-    let key = this.get('key');
+    const key = this.get('key');
     if (!key) {
       throw new Error("You must provide a key to memory-scroll like {{memory-scroll key=\"my-awesome-pane\"}}.");
     }
@@ -28,14 +24,14 @@ export default Component.extend({
 
   remember(key) {
     if (key) {
-      var position = this.targetElement().scrollTop;
+      const position = this.targetElement().scrollTop;
       this.get('memory')[key] = position;
     }
   },
 
   restore(key) {
-    var position = this.get('memory')[key] || 0;
-    var elt = this.targetElement();
+    const position = this.get('memory')[key] || 0;
+    const elt = this.targetElement();
     if (elt) {
       elt.scrollTop = position;
     }
