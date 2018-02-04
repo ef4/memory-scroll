@@ -1,9 +1,14 @@
 # Memory-scroll
 
-[Demo App](https://ef4.github.io/memory-scroll/)
-
 This addon provides Ember components that help you avoiding losing the
 user's scroll positions unexpectedly as they navigate through the app.
+
+
+### Installation
+
+```
+ember install memory-scroll
+```
 
 # Components
 
@@ -56,3 +61,17 @@ Example:
 ```
 
 This component always scrolls the document to the given position when it renders and when the key changes.
+
+## overwrite memory-scroll
+
+You can extend like:
+
+```javascript
+import MemoryScroll from 'memory-scroll/components/memory-scroll';
+export default MemoryScroll.extend({
+  didRender() {
+    this._super(...arguments);
+    // your stuff here
+  }
+});
+```
