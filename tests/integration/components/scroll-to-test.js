@@ -2,13 +2,13 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
+import $ from "jquery";
 
 module('Integration | Component | scroll to', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it scrolls document at initial render', async function(assert) {
-    let doc = Ember.$(document);
+    let doc = $(document);
     await render(hbs`
       <style type="text/css">
         body {
@@ -25,7 +25,7 @@ module('Integration | Component | scroll to', function(hooks) {
   });
 
   test('it scrolls document at initial render with key', async function(assert) {
-    let doc = Ember.$(document);
+    let doc = $(document);
     this.set('key', 1);
     await render(hbs`
       <style type="text/css">
@@ -43,7 +43,7 @@ module('Integration | Component | scroll to', function(hooks) {
   });
 
   test('it scrolls document when key changes', async function(assert) {
-    let doc = Ember.$(document);
+    let doc = $(document);
     this.set('key', 1);
     await render(hbs`
       <style type="text/css">

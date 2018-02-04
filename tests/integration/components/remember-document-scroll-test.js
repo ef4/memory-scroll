@@ -1,8 +1,8 @@
-import Ember from 'ember';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import $ from "jquery";
 
 module('Integration | Component | remember document scroll', function(hooks) {
   setupRenderingTest(hooks);
@@ -20,10 +20,10 @@ module('Integration | Component | remember document scroll', function(hooks) {
       {{/if}}
     `);
     this.set('showIt', 'first');
-    Ember.$(document).scrollTop(50);
+    $(document).scrollTop(50);
     this.set('showIt', false);
-    Ember.$(document).scrollTop(0);
+    $(document).scrollTop(0);
     this.set('showIt', 'first');
-    assert.equal(Ember.$(document).scrollTop(), 50);
+    assert.equal($(document).scrollTop(), 50);
   });
 });
