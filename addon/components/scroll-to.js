@@ -9,7 +9,7 @@ export default Component.extend({
   },
   didRender() {
     this._super(...arguments);
-    const key = this.get('key');
+    let key = this.get('key');
     if (key !== this._lastKey) {
       this._lastKey = key;
       (document.scrollingElement || document.documentElement).scrollTop = (this.get('position') || 0);

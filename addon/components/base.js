@@ -6,7 +6,7 @@ export default Component.extend({
 
   didRender() {
     this._super(...arguments);
-    const key = this.get('key');
+    let key = this.get('key');
     if (!key) {
       throw new Error("You must provide a key to memory-scroll like {{memory-scroll key=\"my-awesome-pane\"}}.");
     }
@@ -24,14 +24,14 @@ export default Component.extend({
 
   remember(key) {
     if (key) {
-      const position = this.targetElement().scrollTop;
+      let position = this.targetElement().scrollTop;
       this.get('memory')[key] = position;
     }
   },
 
   restore(key) {
-    const position = this.get('memory')[key] || 0;
-    const elt = this.targetElement();
+    let position = this.get('memory')[key] || 0;
+    let elt = this.targetElement();
     if (elt) {
       elt.scrollTop = position;
     }
