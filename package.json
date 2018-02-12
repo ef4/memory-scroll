@@ -11,7 +11,7 @@
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/ef4/memory-scroll",
   "scripts": {
     "build": "ember build",
     "start": "ember serve",
