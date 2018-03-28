@@ -1,7 +1,6 @@
-import Ember from 'ember';
-const FIRST_RUN = function(){};
+import Component from "@ember/component";
 
-const { Component } = Ember;
+const FIRST_RUN = () => {};
 
 export default Component.extend({
   init() {

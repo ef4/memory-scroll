@@ -1,12 +1,8 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  inject
-} = Ember;
+import Component from "@ember/component";
+import { inject as service } from "@ember/service";
 
 export default Component.extend({
-  memory: inject.service('memory-scroll'),
+  memory: service('memory-scroll'),
 
   didRender() {
     this._super(...arguments);
@@ -28,14 +24,14 @@ export default Component.extend({
 
   remember(key) {
     if (key) {
-      var position = this.targetElement().scrollTop;
+      let position = this.targetElement().scrollTop;
       this.get('memory')[key] = position;
     }
   },
 
   restore(key) {
-    var position = this.get('memory')[key] || 0;
-    var elt = this.targetElement();
+    let position = this.get('memory')[key] || 0;
+    let elt = this.targetElement();
     if (elt) {
       elt.scrollTop = position;
     }
