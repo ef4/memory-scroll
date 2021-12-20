@@ -1,6 +1,6 @@
 {
   "name": "memory-scroll",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An Ember component that remembers its scroll position.",
   "keywords": [
     "ember-addon"
