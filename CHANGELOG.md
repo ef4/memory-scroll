@@ -1,1 +1,16 @@
 # Changelog
+
+## Release (2025-03-21)
+
+* memory-scroll 2.0.0 (major)
+
+#### :boom: Breaking Change
+* `memory-scroll`
+  * [#28](https://github.com/ef4/memory-scroll/pull/28) V2 addon ([@ef4](https://github.com/ef4))
+
+#### :house: Internal
+* `memory-scroll`
+  * [#29](https://github.com/ef4/memory-scroll/pull/29) release plan ([@ef4](https://github.com/ef4))
+
+#### Committers: 1
+- Edward Faulkner ([@ef4](https://github.com/ef4))
