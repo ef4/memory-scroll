@@ -47,7 +47,14 @@ export default ts.config(
    * https://eslint.org/docs/latest/use/configure/ignore
    */
   {
-    ignores: ['dist/', 'declarations/', 'node_modules/', 'coverage/', '!**/.*'],
+    ignores: [
+      'dist/',
+      'declarations/',
+      'node_modules/',
+      'coverage/',
+      '!**/.*',
+      'testem.js',
+    ],
   },
   /**
    * https://eslint.org/docs/latest/use/configure/configuration-files#configuring-linter-options
