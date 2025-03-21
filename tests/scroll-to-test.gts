@@ -2,7 +2,8 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, settled } from '@ember/test-helpers';
 import { TrackedObject } from 'tracked-built-ins';
-import scrollTo from '../src/components/scroll-to';
+import ScrollTo from '../src/components/scroll-to';
+import { scrollTo } from '@ember/test-helpers';
 
 module('Integration | Component | scroll to', function (hooks) {
   setupRenderingTest(hooks);
@@ -19,7 +20,7 @@ module('Integration | Component | scroll to', function (hooks) {
         </style>
 
         {{#if state.showIt}}
-          {{scrollTo position=17}}
+          <ScrollTo @position={{17}} />
         {{/if}}
       </template>,
     );
@@ -45,7 +46,7 @@ module('Integration | Component | scroll to', function (hooks) {
         </style>
 
         {{#if state.showIt}}
-          {{scrollTo position=17 key=state.key}}
+          <ScrollTo @position={{17}} @key={{state.key}} />
         {{/if}}
       </template>,
     );
@@ -70,13 +71,13 @@ module('Integration | Component | scroll to', function (hooks) {
         </style>
 
         {{#if state.showIt}}
-          {{scrollTo position=17 key=state.key}}
+          <ScrollTo @position={{17}} @key={{state.key}} />
         {{/if}}
       </template>,
     );
     state.showIt = 'first';
     await settled();
-    document.documentElement.scrollTo({ top: 0 });
+    await scrollTo(document.documentElement, 0, 0);
     state.key = 2;
     await settled();
     assert.equal(document.documentElement.scrollTop, 17);

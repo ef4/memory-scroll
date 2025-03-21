@@ -2,13 +2,15 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { TrackedObject } from 'tracked-built-ins';
-import rememberDocumentScroll from '../src/components/remember-document-scroll';
+import RememberDocumentScroll from '../src/components/remember-document-scroll';
+import { scrollTo } from '@ember/test-helpers';
+import { settled } from '@ember/test-helpers';
 
 module('Integration | Component | remember document scroll', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it controls document scroll position', async function (assert) {
-    const state: { showIt: string | boolean } = new TrackedObject({
+    const state: { showIt: string | false } = new TrackedObject({
       showIt: false,
     });
 
@@ -21,16 +23,17 @@ module('Integration | Component | remember document scroll', function (hooks) {
         </style>
 
         {{#if state.showIt}}
-          {{rememberDocumentScroll key=state.showIt}}
+          <RememberDocumentScroll @key={{state.showIt}} />
         {{/if}}
       </template>,
     );
 
     state.showIt = 'first';
-    document.documentElement.scrollTo({ top: 50 });
+    await scrollTo(document.documentElement, 0, 50);
     state.showIt = false;
-    document.documentElement.scrollTo({ top: 50 });
+    await scrollTo(document.documentElement, 0, 0);
     state.showIt = 'first';
+    await settled();
     assert.equal(document.documentElement.scrollTop, 50);
   });
 });

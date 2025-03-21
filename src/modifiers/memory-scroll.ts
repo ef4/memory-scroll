@@ -5,7 +5,7 @@ import type MemoryScrollService from '../services/memory-scroll';
 import type { ArgsFor } from 'ember-modifier';
 
 interface Signature {
-  Element: HTMLElement;
+  Element: Element;
   Args: {
     Named: {
       key: string;
@@ -16,24 +16,26 @@ interface Signature {
 export default class MemoryScrollModifier extends Modifier<Signature> {
   @service('memoryScroll') declare memory: MemoryScrollService;
 
-  #element: HTMLElement | undefined;
+  #element: Element | undefined;
   #lastKey: string | undefined;
 
+  protected targetElement(ownElement: Element): Element {
+    return ownElement;
+  }
+
   modify(
-    element: HTMLElement,
+    element: Element,
     _: ArgsFor<Signature>['positional'],
     { key }: ArgsFor<Signature>['named'],
   ) {
     if (!this.#element) {
-      console.log('initializing');
+      element = this.targetElement(element);
       this.#element = element;
       let handler = () => {
-        console.log('scroll handler fired');
         this.#remember(this.#lastKey);
       };
       element.addEventListener('scroll', handler);
       registerDestructor(this, () => {
-        console.log('destroyed');
         element.removeEventListener('scroll', handler);
       });
     }
@@ -51,7 +53,6 @@ export default class MemoryScrollModifier extends Modifier<Signature> {
   #remember(key: string | undefined) {
     if (key && this.#element) {
       let position = this.#element.scrollTop;
-      console.log(`memory set ${key} ${position}`);
       this.memory.memory.set(key, position);
     }
   }
@@ -59,7 +60,6 @@ export default class MemoryScrollModifier extends Modifier<Signature> {
   #restore(key: string) {
     if (this.#element) {
       let position = this.memory.memory.get(key) ?? 0;
-      console.log(`restoring ${key} ${position}`);
       this.#element.scrollTo({ top: position });
     }
   }

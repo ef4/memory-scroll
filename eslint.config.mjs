@@ -89,6 +89,7 @@ export default ts.config(
       // require relative imports use full extensions
       'import/extensions': ['error', 'always', { ignorePackages: true }],
       'prefer-const': 'off',
+      'no-console': 'error',
     },
   },
   /**
