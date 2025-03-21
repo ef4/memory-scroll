@@ -1,30 +1,92 @@
-# Memory-scroll
+# Memory Scroll
 
-This addon provides Ember components that help you avoiding losing the
-user's scroll positions unexpectedly as they navigate through the app.
-
+This addon provides Ember modifiers and components that help you avoiding losing
+the user's scroll positions unexpectedly as they navigate through the app.
 
 ### Installation
 
 ```
-ember install memory-scroll
+pnpm add --save-dev memory-scroll
+```
+
+# Modifiers
+
+## memoryScroll
+
+Example:
+
+```gts
+import memoryScroll from "memory-scroll/modifiers/memory-scroll";
+
+<template>
+  <div {{memoryScroll key="my-fancy-pane"}}>
+    {{#each items as |item|}}
+      <a href={{item.url}}>{{item.name}}</a>
+    {{/each}}
+  </div>
+</template>
+```
+
+`memoryScroll` does just two things: when its about to be
+destroyed it saves its element's scroll position into a Service (which
+is Ember's standard way to maintain long-lived application state). And
+when it's just been rendered, it looks in the service to see if it
+should set its scroll position.
+
+The `key` attribute is mandatory and it determines what constitutes
+"the same" element that should share memory. The simplest usage is
+to use a constant string ID. A more advanced usage is to use part of
+your model data so the memory is context-dependent, like:
+
+```hbs
+<div {{memoryScroll key=(concat "person-detail/" model.id) }}>
+```
+
+## rememberDocumentScroll
+
+If instead you want to remember the scroll position of the document itself, you can use:
+
+```gts
+import rememberDocumentScroll from "memory-scroll/modifiers/remember-document-scroll";
+
+<template><div {{rememberDocumentScroll key=model.id}} /></template>
+```
+
+Its key works the same way as `memoryScroll`, but it reads and writes `document.documentElement.scrollTop()`.
+
+## scrollTo
+
+This modifier always scrolls the document to the given position when it renders and when the key changes.
+
+Example:
+
+```gts
+import scrollTo from "memory-scroll/modifiers/scroll-to";
+
+<template>
+  <div {{scrollTo position=0 key=model.id}} />
+</template>
 ```
 
 # Components
 
-## memory-scroll
+## MemoryScroll
 
 Example:
 
-```handlebars
-{{#memory-scroll key="my-fancy-pane"}}
-  {{#each items as |item|}}
-    {{#link-to "detail" item}}{{item.id}}: {{item.value}}{{/link-to}}
-  {{/each}}
-{{/memory-scroll}}
+```gts
+import MemoryScroll from "memory-scroll/components/memory-scroll";
+
+<template>
+  <MemoryScroll @key="my-fancy-pane">
+    {{#each items as |item|}}
+      <a href={{item.url}}>{{item.name}}</a>
+    {{/each}}
+  </MemoryScroll>
+</template>
 ```
 
-`{{memory-scroll}}` does just two things: when its about to be
+`MemoryScroll` does just two things: when its about to be
 destroyed it saves its element's scroll position into a Service (which
 is Ember's standard way to maintain long-lived application state). And
 when it's just been rendered, it looks in the service to see if it
@@ -38,40 +100,33 @@ The `key` attribute is mandatory and it determines what constitutes
 to use a constant string ID. A more advanced usage is to use part of
 your model data so the memory is context-dependent, like:
 
-```handlebars
-{{memory-scroll key=(concat "person-detail/" model.id)}}
+```gts
+<template><MemoryScroll @key="person-detail/{{model.id}}" /></template>
 ```
 
-## remember-document-scroll
+## RememberDocumentScroll
 
 If instead you want to remember the scroll position of the document itself, you can use:
 
-```handlebars
-{{remember-document-scroll key=model.id}}
+```gts
+import RememberDocumentScroll from "memory-scroll/components/remember-document-scroll";
+
+<template><RememberDocumentScroll @key={{model.id}} /></template>
 ```
 
-Its key works the same way as `memory-scroll`, but it reads and writes `$(document).scrollTop()`.
+Its key works the same way as `MemoryScroll`, but it reads and writes `document.documentElement.scrollTop()`.
 
-## scroll-to
-
-Example:
-
-```handlebars
-{{scroll-to position=0 key=model.id}}
-```
+## ScrollTo
 
 This component always scrolls the document to the given position when it renders and when the key changes.
 
-## overwrite memory-scroll
+Example:
 
-You can extend like:
+```gts
+import ScrollTo from "memory-scroll/components/scroll-to";
 
-```javascript
-import MemoryScroll from 'memory-scroll/components/memory-scroll';
-export default MemoryScroll.extend({
-  didRender() {
-    this._super(...arguments);
-    // your stuff here
-  }
-});
+<template>
+  <ScrollTo @position={{0}} @key={{model.id}} />
+</template>
 ```
+
