@@ -23,7 +23,7 @@
     </script>
 
     <script type="module">
-      import { start } from "./test-helper";
+      import { start } from "./tests/test-helper.ts";
       import.meta.glob("./tests/**/*.{js,gjs,gts}", { eager: true });
       start();
     </script>

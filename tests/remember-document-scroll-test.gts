@@ -1,29 +1,35 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
-import $ from "jquery";
+import { TrackedObject } from 'tracked-built-ins';
+import rememberDocumentScroll from '../src/components/remember-document-scroll';
 
-module('Integration | Component | remember document scroll', function(hooks) {
+module('Integration | Component | remember document scroll', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it controls document scroll position', async function(assert) {
-    await render(hbs`
-      <style type="text/css">
-        body {
-          height: 30000px;
-        }
-      </style>
+  test('it controls document scroll position', async function (assert) {
+    let state: { showIt: string | boolean } = new TrackedObject({
+      showIt: false,
+    });
 
-      {{#if showIt}}
-        {{remember-document-scroll key=showIt}}
-      {{/if}}
-    `);
-    this.set('showIt', 'first');
+    await render(
+      <template>
+        <style type="text/css">
+          body {
+            height: 30000px;
+          }
+        </style>
+
+        {{#if state.showIt}}
+          {{rememberDocumentScroll key=state.showIt}}
+        {{/if}}
+      </template>,
+    );
+    state.showIt = 'first';
     $(document).scrollTop(50);
-    this.set('showIt', false);
+    state.showIt = false;
     $(document).scrollTop(0);
-    this.set('showIt', 'first');
+    state.showIt = 'first';
     assert.equal($(document).scrollTop(), 50);
   });
 });

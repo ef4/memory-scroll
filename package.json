@@ -71,6 +71,7 @@
     "babel-plugin-ember-template-compilation": "^2.2.5",
     "concurrently": "^9.0.1",
     "ember-qunit": "^9.0.1",
+    "ember-resolver": "^13.1.0",
     "ember-source": "^6.3.0",
     "ember-template-lint": "^6.0.0",
     "eslint": "^9.17.0",
@@ -85,6 +86,7 @@
     "qunit-dom": "^3.4.0",
     "rollup": "^4.22.5",
     "rollup-plugin-copy": "^3.5.0",
+    "tracked-built-ins": "^4.0.0",
     "typescript": "~5.6.0",
     "typescript-eslint": "^8.19.1",
     "vite": "^5.0.9"
