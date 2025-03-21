@@ -1,1 +1,0 @@
-export { default } from 'memory-scroll/components/memory-scroll';
