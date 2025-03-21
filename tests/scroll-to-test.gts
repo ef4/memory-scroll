@@ -8,7 +8,7 @@ module('Integration | Component | scroll to', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it scrolls document at initial render', async function (assert) {
-    let state: { showIt: string } = new TrackedObject({ showIt: '' });
+    const state: { showIt: string } = new TrackedObject({ showIt: '' });
 
     await render(
       <template>
@@ -29,10 +29,11 @@ module('Integration | Component | scroll to', function (hooks) {
   });
 
   test('it scrolls document at initial render with key', async function (assert) {
-    let state: { showIt: string | undefined; key: number } = new TrackedObject({
-      showIt: undefined,
-      key: 1,
-    });
+    const state: { showIt: string | undefined; key: number } =
+      new TrackedObject({
+        showIt: undefined,
+        key: 1,
+      });
 
     this.set('key', 1);
     await render(
@@ -54,10 +55,11 @@ module('Integration | Component | scroll to', function (hooks) {
   });
 
   test('it scrolls document when key changes', async function (assert) {
-    let state: { showIt: string | undefined; key: number } = new TrackedObject({
-      showIt: undefined,
-      key: 1,
-    });
+    const state: { showIt: string | undefined; key: number } =
+      new TrackedObject({
+        showIt: undefined,
+        key: 1,
+      });
 
     await render(
       <template>

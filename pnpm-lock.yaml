@@ -99,6 +99,9 @@ importers:
       eslint-plugin-n:
         specifier: ^17.15.1
         version: 17.16.2(eslint@9.22.0)
+      eslint-plugin-qunit:
+        specifier: ^8.1.2
+        version: 8.1.2(eslint@9.22.0)
       globals:
         specifier: ^15.14.0
         version: 15.15.0
@@ -2365,6 +2368,10 @@ packages:
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.23.0'
+
+  eslint-plugin-qunit@8.1.2:
+    resolution: {integrity: sha512-2gDQdHlQW8GVXD7YYkO8vbm9Ldc60JeGMuQN5QlD48OeZ8znBvvoHWZZMeXjvoDPReGaLEvyuWrDtrI8bDbcqw==}
+    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
 
   eslint-scope@5.1.1:
     resolution: {integrity: sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw==}
@@ -7412,6 +7419,13 @@ snapshots:
       ignore: 5.3.2
       minimatch: 9.0.5
       semver: 7.7.1
+
+  eslint-plugin-qunit@8.1.2(eslint@9.22.0):
+    dependencies:
+      eslint-utils: 3.0.0(eslint@9.22.0)
+      requireindex: 1.2.0
+    transitivePeerDependencies:
+      - eslint
 
   eslint-scope@5.1.1:
     dependencies:

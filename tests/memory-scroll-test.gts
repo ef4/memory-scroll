@@ -9,7 +9,7 @@ module('Integration | Component | memory scroll', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it preserves scroll position when component is replaced', async function (assert) {
-    let state = new TrackedObject({
+    const state = new TrackedObject({
       showIt: false,
     });
 
@@ -48,7 +48,7 @@ module('Integration | Component | memory scroll', function (hooks) {
   });
 
   test('it preserves independent scroll positions per key when component is replaced', async function (assert) {
-    let state: { showIt: string | boolean } = new TrackedObject({
+    const state: { showIt: string | boolean } = new TrackedObject({
       showIt: '',
     });
 
@@ -92,7 +92,7 @@ module('Integration | Component | memory scroll', function (hooks) {
   });
 
   test('it preserves independent scroll positions per key when key changes', async function (assert) {
-    let state: { showIt: string } = new TrackedObject({
+    const state: { showIt: string } = new TrackedObject({
       showIt: '',
     });
     await render(

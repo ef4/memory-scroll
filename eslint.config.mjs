@@ -20,6 +20,7 @@ import importPlugin from 'eslint-plugin-import';
 import n from 'eslint-plugin-n';
 import globals from 'globals';
 import ts from 'typescript-eslint';
+import qunit from 'eslint-plugin-qunit';
 
 const parserOptions = {
   esm: {
@@ -128,6 +129,12 @@ export default ts.config(
       globals: {
         ...globals.node,
       },
+    },
+  },
+  {
+    files: ['tests/**/*.{js,gjs,ts,gts}'],
+    plugins: {
+      qunit,
     },
   },
 );

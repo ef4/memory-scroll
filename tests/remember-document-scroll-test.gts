@@ -8,7 +8,7 @@ module('Integration | Component | remember document scroll', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it controls document scroll position', async function (assert) {
-    let state: { showIt: string | boolean } = new TrackedObject({
+    const state: { showIt: string | boolean } = new TrackedObject({
       showIt: false,
     });
 
