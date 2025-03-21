@@ -44,8 +44,8 @@
     "lint:js:fix": "eslint . --fix",
     "lint:types": "glint",
     "prepack": "rollup --config",
-    "start": "rollup --config --watch",
-    "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
+    "start": "vite dev",
+    "test": "vite build --mode=development && todo-launch-browser-here"
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.8.9",
@@ -94,15 +94,21 @@
     "typescript-eslint": "^8.19.1",
     "vite": "^5.0.9"
   },
-  "peerDependencies": {
-    "ember-source": ">= 4.12.0"
-  },
   "ember": {
     "edition": "octane"
   },
   "ember-addon": {
     "version": 2,
     "type": "addon",
-    "main": "addon-main.cjs"
+    "main": "addon-main.cjs",
+    "app-js": {
+      "./components/memory-scroll.js": "./dist/_app_/components/memory-scroll.js",
+      "./components/remember-document-scroll.js": "./dist/_app_/components/remember-document-scroll.js",
+      "./components/scroll-to.js": "./dist/_app_/components/scroll-to.js",
+      "./modifiers/memory-scroll.js": "./dist/_app_/modifiers/memory-scroll.js",
+      "./modifiers/remember-document-scroll.js": "./dist/_app_/modifiers/remember-document-scroll.js",
+      "./modifiers/scroll-to.js": "./dist/_app_/modifiers/scroll-to.js",
+      "./services/memory-scroll.js": "./dist/_app_/services/memory-scroll.js"
+    }
   }
 }

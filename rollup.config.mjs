@@ -1,6 +1,8 @@
 import { babel } from '@rollup/plugin-babel';
 import copy from 'rollup-plugin-copy';
 import { Addon } from '@embroider/addon-dev/rollup';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const addon = new Addon({
   srcDir: 'src',
@@ -41,11 +43,13 @@ export default {
     // It exists only to provide development niceties for you, like automatic
     // template colocation.
     //
-    // By default, this will load the actual babel config from the file
-    // babel.config.json.
     babel({
       extensions: ['.js', '.gjs', '.ts', '.gts'],
       babelHelpers: 'bundled',
+      configFile: resolve(
+        dirname(fileURLToPath(import.meta.url)),
+        './babel.publish.config.cjs',
+      ),
     }),
 
     // Ensure that standalone .hbs files are properly integrated as Javascript.
