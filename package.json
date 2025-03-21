@@ -45,7 +45,7 @@
     "lint:types": "glint",
     "prepack": "rollup --config",
     "start": "vite dev",
-    "test": "vite build --mode=development && todo-launch-browser-here"
+    "test": "vite build --mode=development && testem --file testem.js ci"
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.8.9",
@@ -89,6 +89,7 @@
     "qunit-dom": "^3.4.0",
     "rollup": "^4.22.5",
     "rollup-plugin-copy": "^3.5.0",
+    "testem": "^3.15.2",
     "tracked-built-ins": "^4.0.0",
     "typescript": "~5.6.0",
     "typescript-eslint": "^8.19.1",
