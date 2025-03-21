@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { TrackedObject } from 'tracked-built-ins';
 import { settled } from '@ember/test-helpers';
-import MemoryScroll from '../src/components/memory-scroll';
+import memoryScroll from '../src/modifiers/memory-scroll';
 import { scrollTo } from '@ember/test-helpers';
 
-module('Integration | Component | memory scroll', function (hooks) {
+module('Integration | Modifier | memoryScroll', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it preserves scroll position when component is replaced', async function (assert) {
@@ -27,11 +27,11 @@ module('Integration | Component | memory scroll', function (hooks) {
         </style>
 
         {{#if state.showIt}}
-          <MemoryScroll @key="sample" class="sample">
+          <div class="sample" {{memoryScroll key="sample"}}>
             <div>
               sample content
             </div>
-          </MemoryScroll>
+          </div>
         {{/if}}
       </template>,
     );
@@ -66,11 +66,11 @@ module('Integration | Component | memory scroll', function (hooks) {
         </style>
 
         {{#if state.showIt}}
-          <MemoryScroll @key={{state.showIt}} class="sample">
+          <div {{memoryScroll key=state.showIt}} class="sample">
             <div>
               sample content
             </div>
-          </MemoryScroll>
+          </div>
         {{/if}}
       </template>,
     );
@@ -109,11 +109,11 @@ module('Integration | Component | memory scroll', function (hooks) {
         </style>
 
         {{#if state.showIt}}
-          <MemoryScroll @key={{state.showIt}} class="sample">
+          <div {{memoryScroll key=state.showIt}} class="sample">
             <div>
               sample content
             </div>
-          </MemoryScroll>
+          </div>
         {{/if}}
       </template>,
     );

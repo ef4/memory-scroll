@@ -1,5 +1,5 @@
-import Component from "@ember/component";
-import { inject as service } from "@ember/service";
+import Component from '@ember/component';
+import { service } from '@ember/service';
 
 export default Component.extend({
   memory: service('memory-scroll'),
@@ -8,7 +8,9 @@ export default Component.extend({
     this._super(...arguments);
     let key = this.get('key');
     if (!key) {
-      throw new Error("You must provide a key to memory-scroll like {{memory-scroll key=\"my-awesome-pane\"}}.");
+      throw new Error(
+        'You must provide a key to memory-scroll like {{memory-scroll key="my-awesome-pane"}}.',
+      );
     }
     if (key !== this._lastKey) {
       this.remember(this._lastKey);
@@ -35,6 +37,5 @@ export default Component.extend({
     if (elt) {
       elt.scrollTop = position;
     }
-  }
-
+  },
 });
