@@ -1,6 +1,7 @@
 import EmberApp from '@ember/application';
 import Resolver from 'ember-resolver';
 import EmberRouter from '@ember/routing/router';
+import * as MemoryScrollService from '../src/services/memory-scroll';
 
 class Router extends EmberRouter {
   location = 'none';
@@ -11,6 +12,7 @@ class TestApp extends EmberApp {
   modulePrefix = 'test-app';
   Resolver = Resolver.withModules({
     'test-app/router': { default: Router },
+    'test-app/services/memory-scroll': MemoryScrollService,
   });
 }
 

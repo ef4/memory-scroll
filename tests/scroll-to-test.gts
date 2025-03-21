@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, settled } from '@ember/test-helpers';
 import { TrackedObject } from 'tracked-built-ins';
 import scrollTo from '../src/components/scroll-to';
 
@@ -9,7 +9,7 @@ module('Integration | Component | scroll to', function (hooks) {
 
   test('it scrolls document at initial render', async function (assert) {
     let state: { showIt: string } = new TrackedObject({ showIt: '' });
-    let doc = $(document);
+
     await render(
       <template>
         <style type="text/css">
@@ -24,7 +24,8 @@ module('Integration | Component | scroll to', function (hooks) {
       </template>,
     );
     state.showIt = 'first';
-    assert.equal(doc.scrollTop(), 17);
+    await settled();
+    assert.equal(document.documentElement.scrollTop, 17);
   });
 
   test('it scrolls document at initial render with key', async function (assert) {
@@ -33,7 +34,6 @@ module('Integration | Component | scroll to', function (hooks) {
       key: 1,
     });
 
-    let doc = $(document);
     this.set('key', 1);
     await render(
       <template>
@@ -49,7 +49,8 @@ module('Integration | Component | scroll to', function (hooks) {
       </template>,
     );
     state.showIt = 'first';
-    assert.equal(doc.scrollTop(), 17);
+    await settled();
+    assert.equal(document.documentElement.scrollTop, 17);
   });
 
   test('it scrolls document when key changes', async function (assert) {
@@ -57,8 +58,6 @@ module('Integration | Component | scroll to', function (hooks) {
       showIt: undefined,
       key: 1,
     });
-
-    let doc = $(document);
 
     await render(
       <template>
@@ -74,8 +73,10 @@ module('Integration | Component | scroll to', function (hooks) {
       </template>,
     );
     state.showIt = 'first';
-    doc.scrollTop(0);
-    this.set('key', 2);
-    assert.equal(doc.scrollTop(), 17);
+    await settled();
+    document.documentElement.scrollTo({ top: 0 });
+    state.key = 2;
+    await settled();
+    assert.equal(document.documentElement.scrollTop, 17);
   });
 });

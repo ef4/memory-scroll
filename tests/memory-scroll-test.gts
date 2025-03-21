@@ -38,17 +38,17 @@ module('Integration | Component | memory scroll', function (hooks) {
     state.showIt = true;
     await settled();
     assert.dom('.sample').hasText('sample content');
-    this.$('.sample').scrollTop(50);
+    document.querySelector('.sample')!.scrollTo({ top: 50 });
     state.showIt = false;
     await settled();
     assert.dom('.sample').doesNotExist();
     state.showIt = true;
     await settled();
-    assert.equal(this.$('.sample').scrollTop(), 50);
+    assert.equal(document.querySelector('.sample')!.scrollTop, 50);
   });
 
   test('it preserves independent scroll positions per key when component is replaced', async function (assert) {
-    let state: { showIt: string } = new TrackedObject({
+    let state: { showIt: string | boolean } = new TrackedObject({
       showIt: '',
     });
 
@@ -75,15 +75,20 @@ module('Integration | Component | memory scroll', function (hooks) {
     );
 
     state.showIt = 'first';
-    assert.equal(this.$('.sample').text().trim(), 'sample content');
-    this.$('.sample').scrollTop(50);
+    await settled();
+    assert.dom('.sample').hasText('sample content');
+    document.querySelector('.sample')!.scrollTo({ top: 50 });
     state.showIt = false;
-    assert.equal(this.$('.sample').length, 0);
+    await settled();
+    assert.dom('.sample').doesNotExist();
     state.showIt = 'second';
-    assert.equal(this.$('.sample').scrollTop(), 0);
+    await settled();
+    assert.equal(document.querySelector('.sample')!.scrollTop, 0);
     state.showIt = false;
+    await settled();
     state.showIt = 'first';
-    assert.equal(this.$('.sample').scrollTop(), 50);
+    await settled();
+    assert.equal(document.querySelector('.sample')!.scrollTop, 50);
   });
 
   test('it preserves independent scroll positions per key when key changes', async function (assert) {
@@ -113,11 +118,14 @@ module('Integration | Component | memory scroll', function (hooks) {
     );
 
     state.showIt = 'first';
-    assert.equal(this.$('.sample').text().trim(), 'sample content');
-    this.$('.sample').scrollTop(50);
+    await settled();
+    assert.dom('.sample').hasText('sample content');
+    document.querySelector('.sample')!.scrollTo({ top: 50 });
     state.showIt = 'second';
-    assert.equal(this.$('.sample').scrollTop(), 0);
+    await settled();
+    assert.equal(document.querySelector('.sample')!.scrollTop, 0);
     state.showIt = 'first';
-    assert.equal(this.$('.sample').scrollTop(), 50);
+    await settled();
+    assert.equal(document.querySelector('.sample')!.scrollTop, 50);
   });
 });

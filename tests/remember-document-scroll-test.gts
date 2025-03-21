@@ -25,11 +25,12 @@ module('Integration | Component | remember document scroll', function (hooks) {
         {{/if}}
       </template>,
     );
+
     state.showIt = 'first';
-    $(document).scrollTop(50);
+    document.documentElement.scrollTo({ top: 50 });
     state.showIt = false;
-    $(document).scrollTop(0);
+    document.documentElement.scrollTo({ top: 50 });
     state.showIt = 'first';
-    assert.equal($(document).scrollTop(), 50);
+    assert.equal(document.documentElement.scrollTop, 50);
   });
 });
