@@ -8,7 +8,7 @@ interface Signature {
   Element: Element;
   Args: {
     Named: {
-      key: string;
+      key: string | number;
     };
   };
 }
@@ -17,7 +17,7 @@ export default class MemoryScrollModifier extends Modifier<Signature> {
   @service('memoryScroll') declare memory: MemoryScrollService;
 
   #element: Element | undefined;
-  #lastKey: string | undefined;
+  #lastKey: string | number | undefined;
 
   protected targetElement(ownElement: Element): Element {
     return ownElement;
@@ -50,14 +50,14 @@ export default class MemoryScrollModifier extends Modifier<Signature> {
       this.#restore(key);
     }
   }
-  #remember(key: string | undefined) {
+  #remember(key: string | number | undefined) {
     if (key && this.#element) {
       let position = this.#element.scrollTop;
       this.memory.memory.set(key, position);
     }
   }
 
-  #restore(key: string) {
+  #restore(key: string | number) {
     if (this.#element) {
       let position = this.memory.memory.get(key) ?? 0;
       this.#element.scrollTo({ top: position });

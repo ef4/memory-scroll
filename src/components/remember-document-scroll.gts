@@ -3,7 +3,7 @@ import type { TemplateOnlyComponent } from '@ember/component/template-only';
 
 const RememberDocumentScroll: TemplateOnlyComponent<{
   Element: HTMLElement;
-  Args: { key: string };
+  Args: { key: string | number };
   Blocks: {
     default: [];
   };
