@@ -87,6 +87,7 @@
     "prettier-plugin-ember-template-tag": "^2.0.4",
     "qunit": "^2.24.1",
     "qunit-dom": "^3.4.0",
+    "release-plan": "^0.16.0",
     "rollup": "^4.22.5",
     "rollup-plugin-copy": "^3.5.0",
     "testem": "^3.15.2",
@@ -95,6 +96,7 @@
     "typescript-eslint": "^8.19.1",
     "vite": "^5.0.9"
   },
+  "packageManager": "pnpm@10.4.1",
   "ember": {
     "edition": "octane"
   },
@@ -111,6 +113,5 @@
       "./modifiers/scroll-to.js": "./dist/_app_/modifiers/scroll-to.js",
       "./services/memory-scroll.js": "./dist/_app_/services/memory-scroll.js"
     }
-  },
-  "packageManager": "pnpm@10.4.1"
+  }
 }
