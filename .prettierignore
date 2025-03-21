@@ -17,4 +17,5 @@
 /.node_modules.ember-try/
 /pnpm-lock.ember-try.yaml
 *.yaml
+*.md
 
