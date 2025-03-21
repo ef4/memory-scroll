@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | memory scroll', function(hooks) {
+module('Integration | Component | memory scroll', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it preserves scroll position when component is replaced', async function(assert) {
+  test('it preserves scroll position when component is replaced', async function (assert) {
     await render(hbs`
       <style type="text/css">
         .sample {
@@ -36,7 +36,7 @@ module('Integration | Component | memory scroll', function(hooks) {
     assert.equal(this.$('.sample').scrollTop(), 50);
   });
 
-  test('it preserves independent scroll positions per key when component is replaced', async function(assert) {
+  test('it preserves independent scroll positions per key when component is replaced', async function (assert) {
     await render(hbs`
       <style type="text/css">
         .sample {
@@ -69,7 +69,7 @@ module('Integration | Component | memory scroll', function(hooks) {
     assert.equal(this.$('.sample').scrollTop(), 50);
   });
 
-  test('it preserves independent scroll positions per key when key changes', async function(assert) {
+  test('it preserves independent scroll positions per key when key changes', async function (assert) {
     await render(hbs`
       <style type="text/css">
         .sample {
