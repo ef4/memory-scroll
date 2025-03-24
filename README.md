@@ -5,7 +5,7 @@ the user's scroll positions unexpectedly as they navigate through the app.
 
 ### Installation
 
-```
+```sh
 pnpm add --save-dev memory-scroll
 ```
 
@@ -15,7 +15,7 @@ pnpm add --save-dev memory-scroll
 
 Example:
 
-```gts
+```glimmer-ts
 import memoryScroll from "memory-scroll/modifiers/memory-scroll";
 
 <template>
@@ -46,7 +46,7 @@ your model data so the memory is context-dependent, like:
 
 If instead you want to remember the scroll position of the document itself, you can use:
 
-```gts
+```glimmer-ts
 import rememberDocumentScroll from "memory-scroll/modifiers/remember-document-scroll";
 
 <template><div {{rememberDocumentScroll key=model.id}} /></template>
@@ -60,7 +60,7 @@ This modifier always scrolls the document to the given position when it renders 
 
 Example:
 
-```gts
+```glimmer-ts
 import scrollTo from "memory-scroll/modifiers/scroll-to";
 
 <template>
@@ -74,7 +74,7 @@ import scrollTo from "memory-scroll/modifiers/scroll-to";
 
 Example:
 
-```gts
+```glimmer-ts
 import MemoryScroll from "memory-scroll/components/memory-scroll";
 
 <template>
@@ -100,7 +100,7 @@ The `key` attribute is mandatory and it determines what constitutes
 to use a constant string ID. A more advanced usage is to use part of
 your model data so the memory is context-dependent, like:
 
-```gts
+```glimmer-ts
 <template><MemoryScroll @key="person-detail/{{model.id}}" /></template>
 ```
 
@@ -108,7 +108,7 @@ your model data so the memory is context-dependent, like:
 
 If instead you want to remember the scroll position of the document itself, you can use:
 
-```gts
+```glimmer-ts
 import RememberDocumentScroll from "memory-scroll/components/remember-document-scroll";
 
 <template><RememberDocumentScroll @key={{model.id}} /></template>
@@ -122,7 +122,7 @@ This component always scrolls the document to the given position when it renders
 
 Example:
 
-```gts
+```glimmer-ts
 import ScrollTo from "memory-scroll/components/scroll-to";
 
 <template>
