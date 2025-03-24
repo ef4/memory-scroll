@@ -19,7 +19,15 @@ export default class MemoryScrollModifier extends Modifier<Signature> {
   #element: Element | undefined;
   #lastKey: string | number | undefined;
 
-  protected targetElement(ownElement: Element): Element {
+  // the element where we will read `scrollTop`
+  protected scrollingElement(ownElement: Element): Element {
+    return ownElement;
+  }
+
+  // the element where we will listen for scroll events
+  protected eventElement(
+    ownElement: Element,
+  ): Pick<Element, 'addEventListener' | 'removeEventListener'> {
     return ownElement;
   }
 
@@ -29,14 +37,14 @@ export default class MemoryScrollModifier extends Modifier<Signature> {
     { key }: ArgsFor<Signature>['named'],
   ) {
     if (!this.#element) {
-      element = this.targetElement(element);
-      this.#element = element;
+      this.#element = this.scrollingElement(element);
       let handler = () => {
         this.#remember(this.#lastKey);
       };
-      element.addEventListener('scroll', handler);
+      let eventElement = this.eventElement(element);
+      eventElement.addEventListener('scroll', handler);
       registerDestructor(this, () => {
-        element.removeEventListener('scroll', handler);
+        eventElement.removeEventListener('scroll', handler);
       });
     }
     if (!key) {
