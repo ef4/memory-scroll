@@ -1,22 +1,18 @@
 {
   "solution": {
     "memory-scroll": {
-      "impact": "major",
-      "oldVersion": "2.0.0-alpha.1",
-      "newVersion": "2.0.0",
+      "impact": "patch",
+      "oldVersion": "2.0.0",
+      "newVersion": "2.0.1",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "major",
-          "reason": "Appears in changelog section :boom: Breaking Change"
-        },
-        {
           "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2025-03-21)\n\n* memory-scroll 2.0.0 (major)\n\n#### :boom: Breaking Change\n* `memory-scroll`\n  * [#28](https://github.com/ef4/memory-scroll/pull/28) V2 addon ([@ef4](https://github.com/ef4))\n\n#### :house: Internal\n* `memory-scroll`\n  * [#29](https://github.com/ef4/memory-scroll/pull/29) release plan ([@ef4](https://github.com/ef4))\n\n#### Committers: 1\n- Edward Faulkner ([@ef4](https://github.com/ef4))\n"
+  "description": "## Release (2025-03-24)\n\n* memory-scroll 2.0.1 (patch)\n\n#### :bug: Bug Fix\n* `memory-scroll`\n  * [#34](https://github.com/ef4/memory-scroll/pull/34) fix event listener in document ([@ef4](https://github.com/ef4))\n  * [#32](https://github.com/ef4/memory-scroll/pull/32) don't inline the decorators runtime ([@ef4](https://github.com/ef4))\n\n#### Committers: 1\n- Edward Faulkner ([@ef4](https://github.com/ef4))\n"
 }
